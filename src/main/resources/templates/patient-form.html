@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dodawanie pacjenta</title>
+
+    <link type="text/css"
+          rel="stylesheet"
+          href="@{/resources/css/style.css}">
+
+    <link type="text/css"
+          rel="stylesheet"
+          href="@{/resources/css/add-patient-style.css}">
+</head>
+<body>
+
+    <div id="wrapper">
+        <div id="header">
+            <h2>CRM - Customer Relationship Manager</h2>
+        </div>
+    </div>
+
+    <div id="container">
+        <h3>Save Patient</h3>
+
+        <!--th:object="${patient}"-->
+        <form action="#" th:action="@{/patient/savePatient}"  method="post">
+            <!--<input type="hidden" th:field="*{id}" />-->
+            <input th:type="hidden" name="id" th:field="${patient.id}" />
+
+            <!--<p>First name: <input type="text" th:field="*{firstName}" /></p>-->
+            <p>First name: <input type="text" id="firstName" th:field="${patient.firstName}" /></p>
+            <!--<p>Last name: <input type="text" th:field="*{lastName}" /></p>-->
+            <p>Last name: <input type="text" id="lastName" th:field="${patient.lastName}" /></p>
+            <!--<p>Email: <input type="text" th:field="*{email}" /></p>-->
+            <p>Email: <input type="text" id="email" th:field="${patient.email}" /></p>
+
+            <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        </form>
+
+        <div style="clear; both;"></div>
+
+        <p>
+            <a th:href="@{/patient/list}">Back to List</a>
+        </p>
+
+    </div>
+
+</body>
+</html>

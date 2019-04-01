@@ -47,7 +47,7 @@ public class PatientController {
         return "redirect:/patient/list";
     }
 
-    @GetMapping("/showFormForUpdate")
+    @GetMapping("/showFormForUpdate/")
     public String showFormForUpdate(@RequestParam("patientId") int theId,
                                     Model theModel){
         // get the patient from the database
