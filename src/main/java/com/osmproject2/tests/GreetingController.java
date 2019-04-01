@@ -1,4 +1,4 @@
-package com.osmproject2;
+package com.osmproject2.tests;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
