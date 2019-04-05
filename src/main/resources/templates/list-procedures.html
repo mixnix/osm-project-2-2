@@ -14,9 +14,13 @@
 </div>
 
 <input type="button" value="Add Procedure"
-       onclick="window.location.href='showFormForAdd'; return false;"
+       onclick="window.location.href='showFormForAddProcedure'; return false;"
        class="add-button"
 />
+
+<p>
+    <a th:href="@{/patient/list}">Back to Patient List</a>
+</p>
 
 <div id="container">
     <div id="content">
@@ -32,8 +36,8 @@
                     <td th:text="xx">...</td>
                     <td th:text="${tempProcedure.date}">...</td>
                     <td th:text="${tempProcedure.procedure_type}">...</td>
-                    <!--<td><a th:href="@{'delete?patientId=' + ${tempPatient.id}}">Delete</a></td>-->
-                    <!--<td><a th:href="@{'showFormForUpdate?patientId=' + ${tempPatient.id}}">Update</a></td>-->
+                    <td><a th:href="@{'delete?procedureId=' + ${tempProcedure.id}}">Delete</a></td>
+                    <td><a th:href="@{'showFormForUpdate?procedureId=' + ${tempProcedure.id}}">Update</a></td>
                 </tr>
             </th:block>
         </table>

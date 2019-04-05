@@ -1,5 +1,7 @@
 package com.osmproject2.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,6 +14,7 @@ public class Procedure {
     private int id;
 
     @Column(name="date")
+    @DateTimeFormat(pattern="dd.MM.yyyy")
     @Temporal(TemporalType.DATE)
     private Date date;
 

@@ -35,12 +35,54 @@ public class ProcedureController {
     }
 
 
-//    @PostMapping("/patients/{patientId}/procedures")
-//    public Procedure createProcedure(@PathVariable (value = "patientId") Integer patientId,
-//                                 @Valid @RequestBody Procedure procedure) {
-//        return patientRepository.findById(patientId).map(patient -> {
-//            procedure.setPatient(patient);
-//            return procedureRepository.save(procedure);
-//        }).orElseThrow(() -> new ResourceNotFoundException("PatientId " + patientId + " not found"));
-//    }
+    @GetMapping("/patient/{patientId}/showFormForAddProcedure")
+    public String showFormForAdd(@PathVariable (value = "patientId") Integer patientId,
+                                 Model theModel){
+
+        Patient patient = patientRepository.getOne(patientId);
+
+        Procedure procedure = new Procedure();
+        procedure.setPatient(patient);
+
+        theModel.addAttribute("procedure", procedure);
+        theModel.addAttribute("patientId", patientId);
+
+        return "procedure-form";
+    }
+
+    @PostMapping("/patient/{patientId}/saveProcedure")
+    public String saveProcedure(@PathVariable (value = "patientId") Integer patientId,
+                                @ModelAttribute("procedure") Procedure procedure){
+
+        procedure.setPatient(patientRepository.getOne(patientId));
+        procedureRepository.save(procedure);
+
+        // todo: niech redirectuje do listy procedure dla danego pacjenta ale to potem zrobie
+        return "redirect:/patient/" + patientId + "/procedure";
+    }
+
+    @GetMapping("/patient/{patientId}/showFormForUpdate")
+    public String showFormForUpdate(@PathVariable (value = "patientId") Integer patientId,
+                                    @RequestParam("procedureId") int theId,
+                                    Model theModel){
+        // get the patient from the database
+        Procedure procedure = procedureRepository.getOne(theId);
+
+        // set patient as a model attribute to pre-populate the form
+        theModel.addAttribute("procedure", procedure);
+
+        // send over to our form
+        return "procedure-form";
+    }
+
+    @GetMapping("/patient/{patientId}/delete")
+    public String deletePatient(@PathVariable (value = "patientId") Integer patientId,
+                                @RequestParam("procedureId") int theId){
+
+        procedureRepository.deleteById(theId);
+
+        return "redirect:/patient/" + patientId + "/procedure";
+    }
+
+
 }

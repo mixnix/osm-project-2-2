@@ -26,7 +26,9 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
+                    <th>Delete</th>
                     <th>Update</th>
+                    <th>Procedures</th>
                 </tr>
                 <th:block th:each="tempPatient : ${patients}">
                     <tr>
@@ -35,6 +37,7 @@
                         <td th:text="${tempPatient.email}">...</td>
                         <td><a th:href="@{'delete?patientId=' + ${tempPatient.id}}">Delete</a></td>
                         <td><a th:href="@{'showFormForUpdate?patientId=' + ${tempPatient.id}}">Update</a></td>
+                        <td><a th:href="@{/patient/} +  ${tempPatient.id} + @{/procedure}">Procedures</a></td>
                     </tr>
                 </th:block>
             </table>
