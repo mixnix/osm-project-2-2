@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>wyswietlanie procedur pacjentow</title>
+
+    <!--<link type="text/css" rel="stylesheet"-->
+          <!--href="@{/resources/css/style.css}"/>-->
+</head>
+<body>
+
+<div id="wrapper">
+    <div id="header">
+        <h2>CRM - Customer Relationship Manager</h2>
+    </div>
+</div>
+
+<input type="button" value="Add Procedure"
+       onclick="window.location.href='showFormForAdd'; return false;"
+       class="add-button"
+/>
+
+<div id="container">
+    <div id="content">
+        <!-- add out html table here -->
+        <table>
+            <tr>
+                <th>Patient id</th>
+                <th>Date</th>
+                <th>Procedure type</th>
+            </tr>
+            <th:block th:each="tempProcedure : ${procedures}">
+                <tr>
+                    <td th:text="xx">...</td>
+                    <td th:text="${tempProcedure.date}">...</td>
+                    <td th:text="${tempProcedure.procedure_type}">...</td>
+                    <!--<td><a th:href="@{'delete?patientId=' + ${tempPatient.id}}">Delete</a></td>-->
+                    <!--<td><a th:href="@{'showFormForUpdate?patientId=' + ${tempPatient.id}}">Update</a></td>-->
+                </tr>
+            </th:block>
+        </table>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>
