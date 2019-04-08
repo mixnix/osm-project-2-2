@@ -1,0 +1,54 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hospitalizacje</title>
+
+    <!--<link type="text/css" rel="stylesheet"-->
+    <!--href="@{/resources/css/style.css}"/>-->
+</head>
+<body>
+
+<div id="wrapper">
+    <div id="header">
+        <h2>Hospitalizacje</h2>
+    </div>
+</div>
+
+<input type="button" value="Dodaj hospitalizację"
+       onclick="window.location.href='showFormforAddHospitalization'; return false;"
+       class="add-button"
+/>
+
+<p>
+    <a th:href="@{/patient/list}">Do listy pacjentów</a>
+</p>
+
+<div id="container">
+    <div id="content">
+        <!-- add out html table here -->
+        <table>
+            <tr>
+                <th>Patient id</th>
+                <th>Poczatek</th>
+                <th>Koniec</th>
+                <th>Powód</th>
+                <th>Usun</th>
+                <th>Zmień</th>
+            </tr>
+            <th:block th:each="tempHospitalization : ${hospitalizations}">
+                <tr>
+                    <td th:text="xx">...</td>
+                    <td th:text="${tempHospitalization.startDate}">...</td>
+                    <td th:text="${tempHospitalization.finishDate}">...</td>
+                    <td><a th:href="@{'deleteHospitalization?hospitalizationId=' + ${tempHospitalization.id}}">Usuń</a></td>
+                    <td><a th:href="@{'showFormForHospitalizationUpdate?hospitalizationId=' + ${tempHospitalization.id}}">Zmień</a></td>
+                </tr>
+            </th:block>
+        </table>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>

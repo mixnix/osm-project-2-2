@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dodawanie hospitalizacji</title>
+
+    <link type="text/css"
+          rel="stylesheet"
+          href="@{/resources/css/style.css}">
+
+    <link type="text/css"
+          rel="stylesheet"
+          href="@{/resources/css/add-patient-style.css}">
+</head>
+<body>
+
+<div id="wrapper">
+    <div id="header">
+        <h2>Hospitalizacje formularz</h2>
+    </div>
+</div>
+
+<div id="container">
+    <h3>Save Procedure</h3>
+
+    <!--th:object="${patient}"-->
+    <form action="#" th:action="@{/patient/} + ${patientId} + @{/saveHospitalization}"  method="post">
+        <!--<input type="hidden" th:field="*{id}" />-->
+        <input th:type="hidden" name="id" th:field="${hospitalization.id}" />
+
+        <p>Data początkowa: <input type="text" id="startDate" th:field="${hospitalization.startDate}" /></p>
+        <p>Data koncowa: <input type="text" id="finishDate" th:field="${hospitalization.finishDate}" /></p>
+        <p>Procedure type: <input type="text" id="hospitalizationCause" th:field="${hospitalization.hospitalizationCause}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+
+    <div style="clear; both;"></div>
+
+    <p>
+        <a th:href="@{/patient/} +  ${patientId} + @{/hospitalization}">Back to List</a>
+    </p>
+
+</div>
+
+</body>
+</html>
