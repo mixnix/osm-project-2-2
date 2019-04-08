@@ -76,13 +76,11 @@ public class ProcedureController {
     }
 
     @GetMapping("/patient/{patientId}/delete")
-    public String deletePatient(@PathVariable (value = "patientId") Integer patientId,
+    public String deleteProcedure(@PathVariable (value = "patientId") Integer patientId,
                                 @RequestParam("procedureId") int theId){
 
         procedureRepository.deleteById(theId);
 
         return "redirect:/patient/" + patientId + "/procedure";
     }
-
-
 }
