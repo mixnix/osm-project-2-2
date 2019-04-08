@@ -7,23 +7,31 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.util.Date;
 
+
+
+
 @Entity
-@Table(name="patient_procedure")
+@Table(name="patient_hospitalization")
 @Getter
 @Setter
-public class Procedure {
+public class Hospitalization {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="date")
+    @Column(name="start_date")
     @DateTimeFormat(pattern="dd.MM.yyyy")
     @Temporal(TemporalType.DATE)
-    private Date date;
+    private Date startDate;
 
-    @Column(name="procedure_type")
-    private String procedure_type;
+    @Column(name="finish_date")
+    @DateTimeFormat(pattern="dd.MM.yyyy")
+    @Temporal(TemporalType.DATE)
+    private Date finishDate;
+
+    @Column(name="hospitalization_cause")
+    private String hospitalizationCause;
 
     @ManyToOne
     @JoinColumn(name="patient_id", nullable=false)
