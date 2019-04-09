@@ -5,38 +5,35 @@
 </head>
 <body>
 
-<div id="wrapper">
-    <div id="header">
-        <h2>Procedury pacjentów</h2>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Procedury pacjentów</h1>
+        <hr class="my-4">
+        <input class="btn btn-primary btn-lg" type="button" value="Dodaj procedure"
+               onclick="window.location.href='showFormForAddProcedure'; return false;"/>
+        <a class="btn btn-primary btn-lg" th:href="@{/patient/list}">Do listy pacjentów</a>
     </div>
-</div>
 
-<input type="button" value="Dodaj procedure"
-       onclick="window.location.href='showFormForAddProcedure'; return false;"
-       class="add-button"
-/>
-
-<p>
-    <a th:href="@{/patient/list}">Do listy pacjentów</a>
-</p>
-
-<div id="container">
-    <div id="content">
-        <table>
+    <div class="content">
+        <table class="table">
+            <thead>
             <tr>
-                <th>Date</th>
-                <th>Procedure type</th>
-                <th>Usuń</th>
-                <th>Zmień</th>
+                <th scope="col">Date</th>
+                <th scope="col">Procedure type</th>
+                <th scope="col">Usun</th>
+                <th scope="col">Zmień</th>
             </tr>
+            </thead>
+            <tbody>
             <th:block th:each="tempProcedure : ${procedures}">
                 <tr>
-                    <td th:text="${tempProcedure.date}">...</td>
+                    <th scope="row" th:text="${tempProcedure.date}">...</th>
                     <td th:text="${tempProcedure.procedure_type}">...</td>
                     <td><a th:href="@{'delete?procedureId=' + ${tempProcedure.id}}">klik</a></td>
                     <td><a th:href="@{'showFormForUpdate?procedureId=' + ${tempProcedure.id}}">klik</a></td>
                 </tr>
             </th:block>
+            </tbody>
         </table>
     </div>
 </div>

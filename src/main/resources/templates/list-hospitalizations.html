@@ -5,41 +5,37 @@
 </head>
 <body>
 
-<div id="wrapper">
-    <div id="header">
-        <h2>Hospitalizacje</h2>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Hospitalizacje</h1>
+        <hr class="my-4">
+        <input class="btn btn-primary btn-lg" type="button" value="Dodaj hospitalizację"
+               onclick="window.location.href='showFormforAddHospitalization'; return false;"/>
+        <a class="btn btn-primary btn-lg"  th:href="@{/patient/list}">Do listy pacjentów</a>
     </div>
-</div>
 
-<input type="button" value="Dodaj hospitalizację"
-       onclick="window.location.href='showFormforAddHospitalization'; return false;"
-       class="add-button"
-/>
-
-<p>
-    <a th:href="@{/patient/list}">Do listy pacjentów</a>
-</p>
-
-<div id="container">
-    <div id="content">
-        <!-- add out html table here -->
-        <table>
+    <div class="content">
+        <table class="table">
+            <thead>
             <tr>
-                <th>Poczatek</th>
-                <th>Koniec</th>
-                <th>Powód</th>
-                <th>Usun</th>
-                <th>Zmień</th>
+                <th scope="col">Poczatek</th>
+                <th scope="col">Koniec</th>
+                <th scope="col">Powód</th>
+                <th scope="col">Usun</th>
+                <th scope="col">Zmień</th>
             </tr>
+            </thead>
+            <tbody>
             <th:block th:each="tempHospitalization : ${hospitalizations}">
                 <tr>
-                    <td th:text="${tempHospitalization.startDate}">...</td>
+                    <th scope="row" th:text="${tempHospitalization.startDate}">...</th>
                     <td th:text="${tempHospitalization.finishDate}">...</td>
                     <td th:text="${tempHospitalization.hospitalizationCause}">...</td>
                     <td><a th:href="@{'deleteHospitalization?hospitalizationId=' + ${tempHospitalization.id}}">klik</a></td>
                     <td><a th:href="@{'showFormForHospitalizationUpdate?hospitalizationId=' + ${tempHospitalization.id}}">klik</a></td>
                 </tr>
             </th:block>
+            </tbody>
         </table>
     </div>
 </div>
