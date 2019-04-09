@@ -21,12 +21,12 @@ public class Hospitalization {
     private int id;
 
     @Column(name="start_date")
-    @DateTimeFormat(pattern="dd.MM.yyyy")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date startDate;
 
     @Column(name="finish_date")
-    @DateTimeFormat(pattern="dd.MM.yyyy")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date finishDate;
 
