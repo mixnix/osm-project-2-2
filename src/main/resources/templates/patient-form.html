@@ -4,34 +4,38 @@
     <div th:insert="partials/head_dependencies :: dependencies">Head Dependencies</div>
 </head>
 <body>
-
-    <div id="wrapper">
-        <div id="header">
-            <h2>Tworzenie/modyfikowanie pacjenta</h2>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Tworzenie/modyfikowanie pacjenta</h1>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" th:href="@{/patient/list}">Do listy pacjentów</a>
+    </div>
+    <form action="#" th:action="@{/patient/savePatient}"  method="post">
+        <input th:type="hidden" name="id" th:field="${patient.id}" />
+        <div class="form-group">
+            <label for="firstName">Imię</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Wpisz imię">
         </div>
-    </div>
-
-    <div id="container">
-        <h3>Formularz pacjenta</h3>
-
-        <form action="#" th:action="@{/patient/savePatient}"  method="post">
-            <input th:type="hidden" name="id" th:field="${patient.id}" />
-            <p>Imię: <input type="text" id="firstName" th:field="${patient.firstName}" /></p>
-            <p>Nazwisko: <input type="text" id="lastName" th:field="${patient.lastName}" /></p>
-            <p>Płeć: <input type="text" id="sex" th:field="${patient.sex}" /></p>
-            <p>Pesel: <input type="text" id="pesel" th:field="${patient.pesel}" /></p>
-            <p>Email: <input type="text" id="email" th:field="${patient.email}" /></p>
-
-            <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-        </form>
-
-        <div style="clear; both;"></div>
-
-        <p>
-            <a th:href="@{/patient/list}">Do listy pacjentów</a>
-        </p>
-
-    </div>
+        <div class="form-group">
+            <label for="lastName">Nazwisko</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Wpisz nazwisko">
+        </div>
+        <div class="form-group">
+            <label for="sex">Płeć</label>
+            <input type="text" class="form-control" id="sex" placeholder="Wprowadź płeć">
+        </div>
+        <div class="form-group">
+            <label for="pesel">Pesel</label>
+            <input type="text" class="form-control" id="pesel" placeholder="Wprowadź PESEL">
+        </div>
+        <div class="form-group">
+            <label for="Email1">Email</label>
+            <input type="email" class="form-control" id="Email1" placeholder="Wpisz email">
+        </div>
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <input class="btn btn-danger" type="reset" value="Wyczyść" /></p>
+    </form>
+</div>
 
 <div th:insert="partials/foot_dependencies :: dependencies">Foot Dependencies</div>
 </body>
