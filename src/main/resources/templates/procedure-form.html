@@ -5,30 +5,27 @@
 </head>
 <body>
 
-<div id="wrapper">
-    <div id="header">
-        <h2>Tworzenie/modyfikowanie procedury</h2>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Formularz procedury</h1>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" th:href="@{/patient/list}">Do listy pacjentów</a>
     </div>
-</div>
-
-<div id="container">
-    <h3>Formularz procedury</h3>
-
     <form action="#" th:action="@{/patient/} + ${patientId} + @{/saveProcedure}"  method="post">
         <input th:type="hidden" name="id" th:field="${procedure.id}" />
-
-        <p>Data: <input type="text" id="date" th:field="${procedure.date}" /></p>
-        <p>Typ procedury: <input type="text" id="procedure_type" th:field="${procedure.procedure_type}" /></p>
-
-        <p><input type="submit" value="Zapisz" /> <input type="reset" value="Reset" /></p>
+        <div class="form-group">
+            <label for="date">Data procedury</label>
+            <input type="date" class="form-control" id="date" placeholder="Wpisz datę"
+                   th:field="${procedure.date}">
+        </div>
+        <div class="form-group">
+            <label for="procedure_type">Typ procedury</label>
+            <input type="text" class="form-control" id="procedure_type" placeholder="Procedura"
+                   th:field="${procedure.procedure_type}">
+        </div>
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+        <input class="btn btn-danger" type="reset" value="Wyczyść" /></p>
     </form>
-
-    <div style="clear; both;"></div>
-
-    <p>
-        <a th:href="@{/patient/} +  ${patientId} + @{/procedure}">Do listy procedur</a>
-    </p>
-
 </div>
 
 <div th:insert="partials/foot_dependencies :: dependencies">Foot Dependencies</div>

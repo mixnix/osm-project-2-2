@@ -18,7 +18,7 @@ public class Procedure {
     private int id;
 
     @Column(name="date")
-    @DateTimeFormat(pattern="dd.MM.yyyy")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date date;
 
