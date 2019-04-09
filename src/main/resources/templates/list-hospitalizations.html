@@ -27,7 +27,6 @@
         <!-- add out html table here -->
         <table>
             <tr>
-                <th>Patient id</th>
                 <th>Poczatek</th>
                 <th>Koniec</th>
                 <th>Powód</th>
@@ -36,16 +35,14 @@
             </tr>
             <th:block th:each="tempHospitalization : ${hospitalizations}">
                 <tr>
-                    <td th:text="xx">...</td>
                     <td th:text="${tempHospitalization.startDate}">...</td>
                     <td th:text="${tempHospitalization.finishDate}">...</td>
-                    <td><a th:href="@{'deleteHospitalization?hospitalizationId=' + ${tempHospitalization.id}}">Usuń</a></td>
-                    <td><a th:href="@{'showFormForHospitalizationUpdate?hospitalizationId=' + ${tempHospitalization.id}}">Zmień</a></td>
+                    <td th:text="${tempHospitalization.hospitalizationCause}">...</td>
+                    <td><a th:href="@{'deleteHospitalization?hospitalizationId=' + ${tempHospitalization.id}}">klik</a></td>
+                    <td><a th:href="@{'showFormForHospitalizationUpdate?hospitalizationId=' + ${tempHospitalization.id}}">klik</a></td>
                 </tr>
             </th:block>
         </table>
-
-
     </div>
 </div>
 

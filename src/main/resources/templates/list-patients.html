@@ -3,10 +3,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>wyswietlanie pacjentow</title>
+    <title>Wyswietlanie pacjentow</title>
 
-    <link type="text/css" rel="stylesheet"
-          href="@{/resources/css/style.css}"/>
     <link type="text/css" rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
 </head>
@@ -14,27 +12,25 @@
 
     <div id="wrapper">
         <div id="header">
-            <h2>CRM - Customer Relationship Manager</h2>
+            <h2>Pacjenci</h2>
         </div>
     </div>
 
-    <input type="button" value="Add Patient"
-    onclick="window.location.href='showFormForAdd'; return false;"
-    class="add-button"
-    />
+    <input type="button" value="Dodaj pacjenta"
+           onclick="window.location.href='showFormForAdd'; return false;"
+           class="add-button"/>
 
     <div id="container">
         <div id="content">
-            <!-- add out html table here -->
             <table>
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
                     <th>Płeć</th>
                     <th>Pesel</th>
                     <th>Email</th>
-                    <th>Delete</th>
-                    <th>Update</th>
+                    <th>Uzuń</th>
+                    <th>Zmień</th>
                     <th>Procedury</th>
                     <th>Hospitalizacje</th>
                 </tr>
@@ -45,19 +41,15 @@
                         <td th:text="${tempPatient.sex}">...</td>
                         <td th:text="${tempPatient.pesel}">...</td>
                         <td th:text="${tempPatient.email}">...</td>
-                        <td><a th:href="@{'delete?patientId=' + ${tempPatient.id}}">Delete</a></td>
-                        <td><a th:href="@{'showFormForUpdate?patientId=' + ${tempPatient.id}}">Update</a></td>
+                        <td><a th:href="@{'delete?patientId=' + ${tempPatient.id}}">usuń</a></td>
+                        <td><a th:href="@{'showFormForUpdate?patientId=' + ${tempPatient.id}}">zmień</a></td>
                         <td><a th:href="@{/patient/} +  ${tempPatient.id} + @{/procedure}">klik</a></td>
                         <td><a th:href="@{/patient/} +  ${tempPatient.id} + @{/hospitalization}">klik</a></td>
-
                     </tr>
                 </th:block>
             </table>
-
-
         </div>
     </div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"/>
-
 </body>
 </html>

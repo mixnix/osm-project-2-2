@@ -1,51 +1,43 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>wyswietlanie procedur pacjentow</title>
-
-    <!--<link type="text/css" rel="stylesheet"-->
-          <!--href="@{/resources/css/style.css}"/>-->
+    <title>Procedury pacjentów</title>
 </head>
 <body>
 
 <div id="wrapper">
     <div id="header">
-        <h2>CRM - Customer Relationship Manager</h2>
+        <h2>Procedury pacjentów</h2>
     </div>
 </div>
 
-<input type="button" value="Add Procedure"
+<input type="button" value="Dodaj procedure"
        onclick="window.location.href='showFormForAddProcedure'; return false;"
        class="add-button"
 />
 
 <p>
-    <a th:href="@{/patient/list}">Back to Patient List</a>
+    <a th:href="@{/patient/list}">Do listy pacjentów</a>
 </p>
 
 <div id="container">
     <div id="content">
-        <!-- add out html table here -->
         <table>
             <tr>
-                <th>Patient id</th>
                 <th>Date</th>
                 <th>Procedure type</th>
+                <th>Usuń</th>
+                <th>Zmień</th>
             </tr>
             <th:block th:each="tempProcedure : ${procedures}">
                 <tr>
-                    <td th:text="xx">...</td>
                     <td th:text="${tempProcedure.date}">...</td>
                     <td th:text="${tempProcedure.procedure_type}">...</td>
-                    <td><a th:href="@{'delete?procedureId=' + ${tempProcedure.id}}">Delete</a></td>
-                    <td><a th:href="@{'showFormForUpdate?procedureId=' + ${tempProcedure.id}}">Update</a></td>
+                    <td><a th:href="@{'delete?procedureId=' + ${tempProcedure.id}}">klik</a></td>
+                    <td><a th:href="@{'showFormForUpdate?procedureId=' + ${tempProcedure.id}}">klik</a></td>
                 </tr>
             </th:block>
         </table>
-
-
     </div>
 </div>
-
-
 </body>
 </html>

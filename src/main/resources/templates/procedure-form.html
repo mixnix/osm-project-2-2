@@ -1,45 +1,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Dodawanie pacjenta</title>
-
-    <link type="text/css"
-          rel="stylesheet"
-          href="@{/resources/css/style.css}">
-
-    <link type="text/css"
-          rel="stylesheet"
-          href="@{/resources/css/add-patient-style.css}">
+    <title>Dodawanie procedury</title>
 </head>
 <body>
 
 <div id="wrapper">
     <div id="header">
-        <h2>CRM - Customer Relationship Manager</h2>
+        <h2>Tworzenie/modyfikowanie procedury</h2>
     </div>
 </div>
 
 <div id="container">
-    <h3>Save Procedure</h3>
+    <h3>Formularz procedury</h3>
 
-    <!--th:object="${patient}"-->
-        <form action="#" th:action="@{/patient/} + ${patientId} + @{/saveProcedure}"  method="post">
-        <!--<input type="hidden" th:field="*{id}" />-->
+    <form action="#" th:action="@{/patient/} + ${patientId} + @{/saveProcedure}"  method="post">
         <input th:type="hidden" name="id" th:field="${procedure.id}" />
 
-        <!--<p>First name: <input type="text" th:field="*{firstName}" /></p>-->
-        <p>Date: <input type="text" id="firstName" th:field="${procedure.date}" /></p>
-        <!--<p>Last name: <input type="text" th:field="*{lastName}" /></p>-->
-        <p>Procedure type: <input type="text" id="lastName" th:field="${procedure.procedure_type}" /></p>
-        <!--<p>Email: <input type="text" th:field="*{email}" /></p>-->
-        <!--<p>Email: <input type="text" id="email" th:field="${patient.email}" /></p>-->
+        <p>Data: <input type="text" id="date" th:field="${procedure.date}" /></p>
+        <p>Typ procedury: <input type="text" id="procedure_type" th:field="${procedure.procedure_type}" /></p>
 
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        <p><input type="submit" value="Zapisz" /> <input type="reset" value="Reset" /></p>
     </form>
 
     <div style="clear; both;"></div>
 
     <p>
-        <a th:href="@{/patient/} +  ${patientId} + @{/procedure}">Back to List</a>
+        <a th:href="@{/patient/} +  ${patientId} + @{/procedure}">Do listy procedur</a>
     </p>
 
 </div>
