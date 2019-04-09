@@ -21,17 +21,12 @@ public class Patient {
     @Column(name="last_name")
     private String lastName;
 
+    @Column(name="sex")
+    private String sex;
+
+    @Column(name="pesel")
+    private String pesel;
+
     @Column(name="email")
     private String email;
-
-
-    @Override
-    public String toString() {
-        return "Patient{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }
